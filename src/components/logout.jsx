@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom';
 
 async function LogoutUser(token) {
   return fetch(import.meta.env.VITE_API_URL + '/auth/logout',{
@@ -14,10 +15,14 @@ async function LogoutUser(token) {
 }
 
 const Logout = ({token, resetUserData}) => {
+
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    await LogoutUser(token)
-    resetUserData()
+    e.preventDefault();
+    await LogoutUser(token);
+    resetUserData();
+    navigate('/');
 }
 
   return (

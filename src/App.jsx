@@ -41,6 +41,10 @@ function App() {
           element={<Mini/>}
         />
         {/* <Route
+          path="/minis/:id/edit"
+          element={<MiniEdit/>}
+        /> */}
+        {/* <Route
             path="/upload"
             element={
               <Suspense fallback={<>Loading...</>}>

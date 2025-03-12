@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import CldImage from './CldImage';
+import useUserData from '../useUserData';
 
 
 const getMini = async (id) => {
@@ -13,6 +14,7 @@ const getMini = async (id) => {
 const Mini = () => {
 
   const [mini, setMini] = useState()
+  const {token} = useUserData();
   const { id } = useParams();
 
   useEffect(()=>{
@@ -21,7 +23,6 @@ const Mini = () => {
       setMini(miniData);
     }
     fetchData();
-    
   },[id])
 
   return (
@@ -33,6 +34,7 @@ const Mini = () => {
               <CldImage publicId={img.cloudinaryPublicId}/>
             </li>)}
         </ul>
+        {token && <div>Edit</div>}
       </div>
     </>
   )

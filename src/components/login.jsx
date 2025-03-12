@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom';
 
 async function LoginUser(credentials) {
   return fetch(import.meta.env.VITE_API_URL + '/auth/login',{
@@ -14,6 +15,7 @@ const Login = ({setUserData}) => {
 
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,6 +25,7 @@ const Login = ({setUserData}) => {
     })
     
     setUserData(userData)
+    navigate('/');
 }
 
   return (
