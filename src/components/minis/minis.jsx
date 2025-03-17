@@ -27,7 +27,7 @@ const Minis = () => {
       <div>
         <h1>Minis</h1>
         <ul>
-          {minis.map( m => <li key={m._id}><Link to={'/minis/' + m._id}>{m._id}</Link></li>)}
+          {minis.map( m => <li key={m._id}><Link to={'/minis/' + m._id}>{m.name || m._id}</Link></li>)}
         </ul>
       </div>
     </>

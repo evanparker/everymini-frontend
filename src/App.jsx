@@ -1,10 +1,11 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import useUserData from './useUserData';
 import './App.css'
-import Login from './components/login'
-import Logout from './components/logout'
-import Minis from './components/minis';
-import Mini from './components/mini';
+import Login from './components/auth/login'
+import Logout from './components/auth/logout'
+import Minis from './components/minis/minis';
+import Mini from './components/minis/mini';
+import MiniEdit from './components/minis/miniEdit';
 
 function App() {
   const {token, setUserData, resetUserData} = useUserData();
@@ -40,10 +41,10 @@ function App() {
           path="/minis/:id"
           element={<Mini/>}
         />
-        {/* <Route
+        <Route
           path="/minis/:id/edit"
           element={<MiniEdit/>}
-        /> */}
+        />
         {/* <Route
             path="/upload"
             element={

@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
-import {useParams} from 'react-router-dom'
-import CldImage from './CldImage';
-import useUserData from '../useUserData';
+import {Link, useParams} from 'react-router-dom'
+import useUserData from '../../useUserData';
+import DisplayMini from './displayMini';
 
 
 const getMini = async (id) => {
@@ -28,13 +28,8 @@ const Mini = () => {
   return (
     <>
       <div>
-        <h1>Mini {mini?._id}</h1>
-        <ul>
-          {mini?.images?.map( img => <li key={img._id}>
-              <CldImage publicId={img.cloudinaryPublicId}/>
-            </li>)}
-        </ul>
-        {token && <div>Edit</div>}
+        <DisplayMini mini={mini}/>
+        {token && <div><Link to={"/minis/" + id + "/edit"}>Edit</Link></div>}
       </div>
     </>
   )
