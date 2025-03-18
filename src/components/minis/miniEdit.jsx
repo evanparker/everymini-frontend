@@ -68,7 +68,7 @@ const MiniEdit = () => {
     let images = mini.images;
     for (let publicId of publicIds) {
       const newImage = await postImage({cloudinaryPublicId: publicId}, token);
-      images.push(newImage);
+      images = [newImage, ...images];
     }
     setMini({...mini, images});
   }
