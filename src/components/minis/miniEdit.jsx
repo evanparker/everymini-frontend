@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import useUserData from '../../useUserData';
 import DisplayMini from './displayMini';
+import DragAndDrop from './DragAndDrop'
 
 
 const getMini = async (id) => {
@@ -24,6 +25,21 @@ const postMini = async(mini, token) => {
   })
     .then(data => data.json());
 }
+
+const postImage = async(imageObj, token) => {
+  return fetch(import.meta.env.VITE_API_URL + '/images/', {
+    method: 'POST',
+    headers: new Headers(
+      {
+        'content-type': 'application/json',
+        'authorization': "Bearer " + token
+      }
+    ),
+    body: JSON.stringify(imageObj)
+  })
+    .then(data => data.json());
+}
+
 
 const MiniEdit = () => {
 
@@ -48,14 +64,27 @@ const MiniEdit = () => {
     setName(miniData.name);
   }
 
+  const addImages = async (publicIds) => {
+    let images = mini.images;
+    for (let publicId of publicIds) {
+      const newImage = await postImage({cloudinaryPublicId: publicId}, token);
+      images.push(newImage);
+    }
+    setMini({...mini, images});
+  }
+
   return (
     <>
       {mini && 
         <div>
           <form onSubmit={handleSubmit}>
-            <p>Name</p>
-            <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/>
-            <button type="submit">Submit</button>
+            <label>Name 
+              <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/>
+            </label>
+            <div><DragAndDrop addImages={addImages}/></div>
+            <div>
+              <button type="submit">Submit</button>
+            </div>
           </form>
 
           <DisplayMini mini={mini}/>
