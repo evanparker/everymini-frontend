@@ -3,35 +3,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import useUserData from '../../useUserData';
 import DisplayMini from './displayMini';
 import DragAndDrop from './DragAndDrop'
-
-const postMini = async(mini, token) => {
-  return fetch(import.meta.env.VITE_API_URL + '/minis/', {
-    method: 'POST',
-    headers: new Headers(
-      {
-        'content-type': 'application/json',
-        'authorization': "Bearer " + token
-      }
-    ),
-    body: JSON.stringify(mini)
-  })
-    .then(data => data.json());
-}
-
-const postImage = async(imageObj, token) => {
-  return fetch(import.meta.env.VITE_API_URL + '/images/', {
-    method: 'POST',
-    headers: new Headers(
-      {
-        'content-type': 'application/json',
-        'authorization': "Bearer " + token
-      }
-    ),
-    body: JSON.stringify(imageObj)
-  })
-    .then(data => data.json());
-}
-
+import { apiClient } from '../../services/apiClient';
 
 const MiniNew = () => {
 
@@ -45,7 +17,7 @@ const MiniNew = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const miniData = await postMini({...mini, name}, token);
+    const miniData = await apiClient.post(`/minis/`, {...mini, name});
     console.log(miniData);
     navigate(`/minis/${miniData._id}`);
   }
@@ -53,7 +25,7 @@ const MiniNew = () => {
   const addImages = async (publicIds) => {
     let images = mini.images;
     for (let publicId of publicIds) {
-      const newImage = await postImage({cloudinaryPublicId: publicId}, token);
+      const newImage = await apiClient.post(`/images`, {cloudinaryPublicId: publicId});
       images = [newImage, ...images];
     }
     setMini({...mini, images});

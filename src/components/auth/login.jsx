@@ -1,15 +1,7 @@
 import {useState} from 'react'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom';
-
-async function LoginUser(credentials) {
-  return fetch(import.meta.env.VITE_API_URL + '/auth/login',{
-    method: 'POST',
-    headers: new Headers({'content-type': 'application/json'}),
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json());
-}
+import { apiClient } from '../../services/apiClient';
 
 const Login = ({setUserData}) => {
 
@@ -19,7 +11,7 @@ const Login = ({setUserData}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const userData = await LoginUser({
+    const userData = await apiClient.post(`/auth/login`, {
         email,
         password
     })

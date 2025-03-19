@@ -1,14 +1,7 @@
 
 import {useEffect, useState} from 'react'
 import {Link, useParams} from 'react-router-dom'
-
-const getUserMinis = async (username) => {
-  return fetch(import.meta.env.VITE_API_URL + '/users/' + username + '/minis', {
-    method: 'GET'
-  })
-    .then(data => data.json());
-}
-
+import { apiClient } from '../../services/apiClient';
 
 const User = () => {
   const [minis, setMinis] = useState()
@@ -16,7 +9,7 @@ const User = () => {
 
   useEffect(()=>{
     const fetchData = async () => {
-      const minisData = await getUserMinis(username);
+      const minisData = await apiClient.get(`/users/${username}/minis`);
       setMinis(minisData);
     }
     fetchData();

@@ -3,43 +3,7 @@ import {Link, useNavigate, useParams} from 'react-router-dom'
 import useUserData from '../../useUserData';
 import DisplayMini from './displayMini';
 import DragAndDrop from './DragAndDrop'
-
-
-const getMini = async (id) => {
-  return fetch(import.meta.env.VITE_API_URL + '/minis/' + id, {
-    method: 'GET'
-  })
-    .then(data => data.json());
-}
-
-const putMini = async(mini, token) => {
-  return fetch(import.meta.env.VITE_API_URL + '/minis/' + mini._id, {
-    method: 'PUT',
-    headers: new Headers(
-      {
-        'content-type': 'application/json',
-        'authorization': "Bearer " + token
-      }
-    ),
-    body: JSON.stringify(mini)
-  })
-    .then(data => data.json());
-}
-
-const postImage = async(imageObj, token) => {
-  return fetch(import.meta.env.VITE_API_URL + '/images/', {
-    method: 'POST',
-    headers: new Headers(
-      {
-        'content-type': 'application/json',
-        'authorization': "Bearer " + token
-      }
-    ),
-    body: JSON.stringify(imageObj)
-  })
-    .then(data => data.json());
-}
-
+import { apiClient } from '../../services/apiClient';
 
 const MiniEdit = () => {
 
@@ -51,7 +15,7 @@ const MiniEdit = () => {
 
   useEffect(()=>{
     const fetchData = async () => {
-      const miniData = await getMini(id);
+      const miniData = await apiClient.get(`/minis/${id}`);
       setMini(miniData);
       setName(miniData.name);
     }
@@ -60,7 +24,7 @@ const MiniEdit = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const miniData = await putMini({...mini, name}, token);
+    const miniData = await apiClient.put(`/minis/${mini._id}`, {...mini, name});
     setMini({...miniData, images: mini.images});
     setName(miniData.name);
     navigate(`/minis/${id}`);
@@ -69,7 +33,7 @@ const MiniEdit = () => {
   const addImages = async (publicIds) => {
     let images = mini.images;
     for (let publicId of publicIds) {
-      const newImage = await postImage({cloudinaryPublicId: publicId}, token);
+      const newImage = await apiClient.post(`/images`, {cloudinaryPublicId: publicId});
       images = [newImage, ...images];
     }
     setMini({...mini, images});

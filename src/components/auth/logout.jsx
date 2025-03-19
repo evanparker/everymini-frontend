@@ -1,26 +1,14 @@
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom';
+import { apiClient } from '../../services/apiClient';
 
-async function LogoutUser(token) {
-  return fetch(import.meta.env.VITE_API_URL + '/auth/logout',{
-    method: 'POST',
-    headers: new Headers(
-      {
-        'content-type': 'application/json',
-        'authorization': "Bearer " + token
-      }
-    )
-  })
-    .then(data => data.json());
-}
-
-const Logout = ({token, resetUserData}) => {
+const Logout = ({resetUserData}) => {
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await LogoutUser(token);
+    await apiClient.post(`/auth/logout`, {});
     resetUserData();
     navigate('/');
 }

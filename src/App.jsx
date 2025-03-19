@@ -20,7 +20,7 @@ function App() {
           {!token && <li><Link to={'/login'}>Login</Link></li>}
           {token && <li><Link to={'/logout'}>Logout</Link></li>}
           <li><Link to={'/minis'}>Minis</Link></li> 
-          <li><Link to={'/minis/new'}>New Mini</Link></li> 
+          {token && <li><Link to={'/minis/new'}>New Mini</Link></li>}
         </ul>
       </nav>
       <Routes>
@@ -34,7 +34,7 @@ function App() {
         />
         <Route
           path="/logout"
-          element={<Logout token={token} resetUserData={resetUserData}/>}
+          element={<Logout resetUserData={resetUserData}/>}
         />
         <Route
           path="/minis"
