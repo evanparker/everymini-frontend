@@ -1,20 +1,12 @@
 import {useEffect, useState} from 'react'
-import {Link, useNavigate, useParams} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import useUserData from '../../useUserData';
 import DisplayMini from './displayMini';
 import DragAndDrop from './DragAndDrop'
 
-
-const getMini = async (id) => {
-  return fetch(import.meta.env.VITE_API_URL + '/minis/' + id, {
-    method: 'GET'
-  })
-    .then(data => data.json());
-}
-
-const putMini = async(mini, token) => {
-  return fetch(import.meta.env.VITE_API_URL + '/minis/' + mini._id, {
-    method: 'PUT',
+const postMini = async(mini, token) => {
+  return fetch(import.meta.env.VITE_API_URL + '/minis/', {
+    method: 'POST',
     headers: new Headers(
       {
         'content-type': 'application/json',
@@ -41,29 +33,21 @@ const postImage = async(imageObj, token) => {
 }
 
 
-const MiniEdit = () => {
+const MiniNew = () => {
 
-  const [mini, setMini] = useState();
+  const [mini, setMini] = useState({name: "", images: []});
   const [name, setName] = useState("");
-  const { token, userId } = useUserData();
-  const { id } = useParams();
+  const { token } = useUserData();
   const navigate = useNavigate();
 
   useEffect(()=>{
-    const fetchData = async () => {
-      const miniData = await getMini(id);
-      setMini(miniData);
-      setName(miniData.name);
-    }
-    fetchData();
-  },[id])
+  },[])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const miniData = await putMini({...mini, name}, token);
-    setMini({...miniData, images: mini.images});
-    setName(miniData.name);
-    navigate(`/minis/${id}`);
+    const miniData = await postMini({...mini, name}, token);
+    console.log(miniData);
+    navigate(`/minis/${miniData._id}`);
   }
 
   const addImages = async (publicIds) => {
@@ -75,13 +59,19 @@ const MiniEdit = () => {
     setMini({...mini, images});
   }
 
+  const handleNameChange = (e) => {
+    e.preventDefault();
+    setName(e.target.value)
+    setMini({...mini, name})
+  }
+
   return (
     <>
-      {mini && token && userId === mini?.userId &&
+      {token &&
         <div>
           <form onSubmit={handleSubmit}>
             <label>Name 
-              <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/>
+              <input type="text" value={name} onChange={handleNameChange}/>
             </label>
             <div><DragAndDrop addImages={addImages}/></div>
             <div>
@@ -92,9 +82,6 @@ const MiniEdit = () => {
           <DisplayMini mini={mini}/>
         </div>
       }
-      {mini && userId !== mini?.userId &&
-        <Link to={`/minis/${id}`}>Back to mini</Link>
-      }
       {!token &&
         <Link to={`/login`}>Login?</Link>
       }
@@ -103,4 +90,4 @@ const MiniEdit = () => {
 }
 
 
-export default MiniEdit
+export default MiniNew

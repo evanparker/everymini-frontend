@@ -6,6 +6,7 @@ import Logout from './components/auth/logout'
 import Minis from './components/minis/minis';
 import Mini from './components/minis/mini';
 import MiniEdit from './components/minis/miniEdit';
+import MiniNew from './components/minis/miniNew';
 
 function App() {
   const {token, setUserData, resetUserData} = useUserData();
@@ -18,6 +19,7 @@ function App() {
           {!token && <li><Link to={'/login'}>Login</Link></li>}
           {token && <li><Link to={'/logout'}>Logout</Link></li>}
           <li><Link to={'/minis'}>Minis</Link></li> 
+          <li><Link to={'/minis/new'}>New Mini</Link></li> 
         </ul>
       </nav>
       <Routes>
@@ -45,30 +47,10 @@ function App() {
           path="/minis/:id/edit"
           element={<MiniEdit/>}
         />
-        {/* <Route
-            path="/upload"
-            element={
-              <Suspense fallback={<>Loading...</>}>
-                <Upload />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/apiupload"
-            element={
-              <Suspense fallback={<>Loading...</>}>
-                <ApiUpload />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/album"
-            element={
-              <Suspense fallback={<>Loading...</>}>
-                <Album />
-              </Suspense>
-            }
-          /> */}
+        <Route
+          path="/minis/new"
+          element={<MiniNew/>}
+        />
       </Routes>
 
     </>

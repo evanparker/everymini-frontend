@@ -14,7 +14,7 @@ const getMini = async (id) => {
 const Mini = () => {
 
   const [mini, setMini] = useState()
-  const {token} = useUserData();
+  const {token, userId} = useUserData();
   const { id } = useParams();
 
   useEffect(()=>{
@@ -28,8 +28,8 @@ const Mini = () => {
   return (
     <>
       <div>
-        <DisplayMini mini={mini}/>
-        {token && <div><Link to={"/minis/" + id + "/edit"}>Edit</Link></div>}
+        {mini && <DisplayMini mini={mini}/>}
+        {token && userId === mini?.userId && <div><Link to={"/minis/" + id + "/edit"}>Edit</Link></div>}
       </div>
     </>
   )

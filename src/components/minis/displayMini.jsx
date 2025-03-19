@@ -5,7 +5,7 @@ const DisplayMini = ({mini}) => {
 
   return (
     <div>
-      <h1>{mini?.name || "Mini " + mini?._id}</h1>
+      <h1>{mini?.name || "Untitled Mini"}</h1>
       <ul>
         {mini?.images?.map( img => <li key={img._id}>
             <CldImage publicId={img.cloudinaryPublicId}/>
