@@ -7,6 +7,7 @@ import Minis from './components/minis/minis';
 import Mini from './components/minis/mini';
 import MiniEdit from './components/minis/miniEdit';
 import MiniNew from './components/minis/miniNew';
+import User from './components/users/user';
 
 function App() {
   const {token, setUserData, resetUserData} = useUserData();
@@ -50,6 +51,10 @@ function App() {
         <Route
           path="/minis/new"
           element={<MiniNew/>}
+        />
+        <Route
+          path="/users/:username"
+          element={<User/>}
         />
       </Routes>
 
