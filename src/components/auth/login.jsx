@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom';
-import { apiClient } from '../../services/apiClient';
+import { postLogin } from '../../services/auth';
 
 const Login = ({setUserData}) => {
 
@@ -11,7 +11,7 @@ const Login = ({setUserData}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const userData = await apiClient.post(`/auth/login`, {
+    const userData = await postLogin({
         email,
         password
     })

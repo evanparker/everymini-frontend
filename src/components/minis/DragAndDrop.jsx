@@ -21,6 +21,7 @@ const DragAndDrop = ({addImages}) => {
     setDragOver(false);
 
     const files = Array.from(e.dataTransfer.files);
+    let publicIds = [];
     setLoadingStates(new Array(files.length).fill(true));
 
     abortControllerRef.current.abort();
@@ -56,12 +57,15 @@ const DragAndDrop = ({addImages}) => {
           const json = await response.json();
           const publicId = json.public_id;
 
-          addImages([publicId]);
+          publicIds.push(publicId);
           setLoadingStates((prevStates) =>
             prevStates.map((state, index) =>
               file === files[index] ? false : state
             )
           );
+          if (!loadingStates.some((loading) => loading)) {
+            addImages(publicIds);
+          }
         } catch (error) {
           if (error.name !== 'AbortError') {
             console.error(error);

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom';
-import { apiClient } from '../../services/apiClient';
+import { postLogout } from '../../services/auth';
 
 const Logout = ({resetUserData}) => {
 
@@ -8,7 +8,7 @@ const Logout = ({resetUserData}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await apiClient.post(`/auth/logout`, {});
+    await postLogout({});
     resetUserData();
     navigate('/');
 }

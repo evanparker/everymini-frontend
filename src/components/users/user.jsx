@@ -1,7 +1,7 @@
 
 import {useEffect, useState} from 'react'
 import {Link, useParams} from 'react-router-dom'
-import { apiClient } from '../../services/apiClient';
+import { getMinisByUsername } from '../../services/user';
 
 const User = () => {
   const [minis, setMinis] = useState()
@@ -9,7 +9,7 @@ const User = () => {
 
   useEffect(()=>{
     const fetchData = async () => {
-      const minisData = await apiClient.get(`/users/${username}/minis`);
+      const minisData = await getMinisByUsername(username);
       setMinis(minisData);
     }
     fetchData();

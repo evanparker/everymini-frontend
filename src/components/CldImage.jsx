@@ -1,7 +1,7 @@
 import { Cloudinary } from '@cloudinary/url-gen';
 import { thumbnail } from '@cloudinary/url-gen/actions/resize';
 import { format, quality } from '@cloudinary/url-gen/actions/delivery';
-import { AdvancedImage, placeholder } from '@cloudinary/react';
+import { AdvancedImage } from '@cloudinary/react';
 
 const cld = new Cloudinary({
   cloud: {
@@ -19,8 +19,6 @@ const CldImage = ({ publicId }) => {
     <AdvancedImage
       cldImg={myImage}
       style={{ maxWidth: '100%' }}
-      plugins={[placeholder()]}
-      className="rounded-lg shadow-lg"
     />
   );
 };

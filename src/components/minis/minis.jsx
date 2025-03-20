@@ -1,13 +1,6 @@
 import {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom';
-
-
-const getMinis = async () => {
-  return fetch(import.meta.env.VITE_API_URL + '/minis', {
-    method: 'GET'
-  })
-    .then(data => data.json());
-}
+import { getMinis } from '../../services/mini';
 
 const Minis = () => {
 
@@ -27,7 +20,7 @@ const Minis = () => {
       <div>
         <h1>Minis</h1>
         <ul>
-          {minis.map( m => <li key={m._id}><Link to={'/minis/' + m._id}>{m.name || m._id}</Link></li>)}
+          {minis?.map( m => <li key={m._id}><Link to={'/minis/' + m._id}>{m.name || m._id}</Link></li>)}
         </ul>
       </div>
     </>

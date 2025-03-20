@@ -3,7 +3,8 @@ import {Link, useNavigate} from 'react-router-dom'
 import useUserData from '../../useUserData';
 import DisplayMini from './displayMini';
 import DragAndDrop from './DragAndDrop'
-import { apiClient } from '../../services/apiClient';
+import { postMini } from '../../services/mini';
+import { postImage } from '../../services/image';
 
 const MiniNew = () => {
 
@@ -17,15 +18,14 @@ const MiniNew = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const miniData = await apiClient.post(`/minis/`, {...mini, name});
-    console.log(miniData);
+    const miniData = await postMini({...mini, name});
     navigate(`/minis/${miniData._id}`);
   }
 
   const addImages = async (publicIds) => {
     let images = mini.images;
     for (let publicId of publicIds) {
-      const newImage = await apiClient.post(`/images`, {cloudinaryPublicId: publicId});
+      const newImage = await postImage({cloudinaryPublicId: publicId});
       images = [newImage, ...images];
     }
     setMini({...mini, images});

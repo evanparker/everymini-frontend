@@ -15,7 +15,9 @@ A miniatures portfolio website
 * Manufacturers/Figures
 * Purchase Domain and Deployment
 * Moderation
-
+* Change api to use json:api format 
+  * https://jsonapi.org/ 
+  * https://www.npmjs.com/package/jsonapi-serializer#relationship-deserializer
 
 
 # React + Vite

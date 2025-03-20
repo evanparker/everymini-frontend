@@ -1,3 +1,5 @@
+// credit to https://profy.dev/article/react-architecture-api-client
+
 class APIClient {
   constructor(baseURL) {
     this.baseURL = baseURL;
@@ -15,10 +17,12 @@ class APIClient {
   }
 
   get(url) {
+    const token = JSON.parse(localStorage.getItem('token'));
     return this.request(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'authorization': "Bearer " + token
       },
     });
   }
@@ -47,7 +51,17 @@ class APIClient {
     });
   }
 
-  // You can add more methods (put, delete, etc.) here as needed
+  delete(url) {
+    const token = JSON.parse(localStorage.getItem('token'));
+    return this.request(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': "Bearer " + token
+      },
+    });
+  }
+
 }
 
 export const apiClient = new APIClient(import.meta.env.VITE_API_URL);

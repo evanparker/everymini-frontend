@@ -3,7 +3,8 @@ import {Link, useNavigate, useParams} from 'react-router-dom'
 import useUserData from '../../useUserData';
 import DisplayMini from './displayMini';
 import DragAndDrop from './DragAndDrop'
-import { apiClient } from '../../services/apiClient';
+import { getMini, putMini } from '../../services/mini';
+import { postImage } from '../../services/image';
 
 const MiniEdit = () => {
 
@@ -15,7 +16,7 @@ const MiniEdit = () => {
 
   useEffect(()=>{
     const fetchData = async () => {
-      const miniData = await apiClient.get(`/minis/${id}`);
+      const miniData = await getMini(id);
       setMini(miniData);
       setName(miniData.name);
     }
@@ -24,7 +25,7 @@ const MiniEdit = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const miniData = await apiClient.put(`/minis/${mini._id}`, {...mini, name});
+    const miniData = await putMini(mini._id, {...mini, name});
     setMini({...miniData, images: mini.images});
     setName(miniData.name);
     navigate(`/minis/${id}`);
@@ -33,7 +34,7 @@ const MiniEdit = () => {
   const addImages = async (publicIds) => {
     let images = mini.images;
     for (let publicId of publicIds) {
-      const newImage = await apiClient.post(`/images`, {cloudinaryPublicId: publicId});
+      const newImage = await postImage({cloudinaryPublicId: publicId});
       images = [newImage, ...images];
     }
     setMini({...mini, images});

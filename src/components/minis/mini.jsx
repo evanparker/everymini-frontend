@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import useUserData from '../../useUserData';
 import DisplayMini from './displayMini';
-import { apiClient } from '../../services/apiClient';
+import { getMini } from '../../services/mini';
 
 const Mini = () => {
 
@@ -12,7 +12,7 @@ const Mini = () => {
 
   useEffect(()=>{
     const fetchData = async () => {
-      const miniData = await apiClient.get(`/minis/${id}`);
+      const miniData = await getMini(id);
       setMini(miniData);
     }
     fetchData();
