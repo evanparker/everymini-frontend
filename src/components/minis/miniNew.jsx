@@ -28,7 +28,7 @@ const MiniNew = () => {
       const newImage = await postImage({cloudinaryPublicId: publicId});
       images = [newImage, ...images];
     }
-    setMini({...mini, images});
+    setMini(prevMini => ({ ...prevMini, images }));
   }
 
   const handleNameChange = (e) => {

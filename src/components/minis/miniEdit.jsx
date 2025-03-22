@@ -34,12 +34,12 @@ const MiniEdit = () => {
       const newImage = await postImage({ cloudinaryPublicId: publicId });
       images = [newImage, ...images];
     }
-    setMini({ ...mini, images });
+    setMini(prevMini => ({ ...prevMini, images }));
   };
 
   const handleNameChange = (e) => {
     e.preventDefault();
-    setMini({...mini, name: e.target.value})
+    setMini(prevMini => ({...prevMini, name: e.target.value}))
   }
 
   return (

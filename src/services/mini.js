@@ -1,7 +1,7 @@
 import { apiClient } from "./apiClient";
 
 async function getMinis() {
-  const response = await apiClient.get(`/minis/`);
+  const response = await apiClient.get(`/minis/?thumbnails="true"`);
   return response;
 }
 
