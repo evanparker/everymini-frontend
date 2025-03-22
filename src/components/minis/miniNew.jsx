@@ -5,11 +5,11 @@ import DisplayMini from './displayMini';
 import DragAndDrop from './DragAndDrop'
 import { postMini } from '../../services/mini';
 import { postImage } from '../../services/image';
+import { Button, HR, Label, TextInput } from 'flowbite-react';
 
 const MiniNew = () => {
 
   const [mini, setMini] = useState({name: "", images: []});
-  const [name, setName] = useState("");
   const { token } = useUserData();
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const MiniNew = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const miniData = await postMini({...mini, name});
+    const miniData = await postMini(mini);
     navigate(`/minis/${miniData._id}`);
   }
 
@@ -33,29 +33,33 @@ const MiniNew = () => {
 
   const handleNameChange = (e) => {
     e.preventDefault();
-    setName(e.target.value)
-    setMini({...mini, name})
+    setMini({...mini, name: e.target.value})
   }
 
   return (
     <>
       {token &&
         <div>
-          <form onSubmit={handleSubmit}>
-            <label>Name 
-              <input type="text" value={name} onChange={handleNameChange}/>
-            </label>
-            <div><DragAndDrop addImages={addImages}/></div>
-            <div>
-              <button type="submit">Save</button>
+          <form onSubmit={handleSubmit} className="max-w-lg flex flex-col gap-5">
+            <div className=" mb-2 block">
+              <Label htmlFor="name1" value="Name" />
+              <TextInput
+                id="name1"
+                type="text"
+                value={mini.name}
+                onChange={handleNameChange}
+              />
             </div>
-          </form>
+            <DragAndDrop addImages={addImages} />
 
-          <DisplayMini mini={mini}/>
+            <Button type="submit">Save</Button>
+          </form>
+          <HR/>
+          <DisplayMini mini={mini} />
         </div>
       }
       {!token &&
-        <Link to={`/login`}>Login?</Link>
+        <Button as={Link} to={`/login`}>Login?</Button>
       }
     </>
   )

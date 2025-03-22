@@ -3,6 +3,7 @@ import {Link, useParams} from 'react-router-dom'
 import useUserData from '../../useUserData';
 import DisplayMini from './displayMini';
 import { getMini } from '../../services/mini';
+import { Button } from 'flowbite-react';
 
 const Mini = () => {
 
@@ -22,7 +23,7 @@ const Mini = () => {
     <>
       <div>
         {mini && <DisplayMini mini={mini}/>}
-        {token && userId === mini?.userId && <div><Link to={"/minis/" + id + "/edit"}>Edit</Link></div>}
+        {token && userId === mini?.userId && <Button className="max-w-sm" as={Link} to={"/minis/" + id + "/edit"}>Edit</Button>}
       </div>
     </>
   )
