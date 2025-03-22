@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom';
 import { postLogout } from '../../services/auth';
+import { Button } from 'flowbite-react';
 
 const Logout = ({resetUserData}) => {
 
@@ -16,9 +17,8 @@ const Logout = ({resetUserData}) => {
   return (
     <>
       <div>
-        <h1>Sign Out Here</h1>
         <form onSubmit={handleSubmit}>
-          <button type="submit">Submit</button>
+          <Button type="submit">Logout</Button>
         </form>
       </div>
     </>
