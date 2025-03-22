@@ -8,21 +8,29 @@ import Mini from './components/minis/mini';
 import MiniEdit from './components/minis/miniEdit';
 import MiniNew from './components/minis/miniNew';
 import User from './components/users/user';
+import {DarkThemeToggle, Navbar} from 'flowbite-react';
 
 function App() {
   const {token, setUserData, resetUserData} = useUserData();
 
   return (
     <>
-      <nav>
-        <ul>
-          <li><Link to={'/'}>Home</Link></li>
-          {!token && <li><Link to={'/login'}>Login</Link></li>}
-          {token && <li><Link to={'/logout'}>Logout</Link></li>}
-          <li><Link to={'/minis'}>Minis</Link></li> 
-          {token && <li><Link to={'/minis/new'}>New Mini</Link></li>}
-        </ul>
-      </nav>
+      <Navbar fluid rounded>
+      <Navbar.Collapse>
+        <Navbar.Link as={Link} to={'/'}>Home</Navbar.Link>
+        {!token && <Navbar.Link as={Link} to={'/login'}>Login</Navbar.Link>}
+        {token && <Navbar.Link as={Link} to={'/logout'}>Logout</Navbar.Link>}
+        <Navbar.Link as={Link} to={'/minis'}>Minis</Navbar.Link>
+        {token && <Navbar.Link as={Link} to={'/minis/new'}>New Mini</Navbar.Link>}
+
+      </Navbar.Collapse>
+        {/* <li><Link to={'/'}>Home</Link></li>
+        {!token && <li><Link to={'/login'}>Login</Link></li>}
+        {token && <li><Link to={'/logout'}>Logout</Link></li>}
+        <li><Link to={'/minis'}>Minis</Link></li> 
+        {token && <li><Link to={'/minis/new'}>New Mini</Link></li>} */}
+        <DarkThemeToggle />
+      </Navbar>
       <Routes>
         <Route path="/" element={
           <>
