@@ -9,17 +9,18 @@ import MiniEdit from "./components/minis/miniEdit";
 import MiniNew from "./components/minis/miniNew";
 import User from "./components/users/user";
 import Navigation from "./components/navigation";
-
+import Signup from "./components/auth/signup";
 
 function App() {
   const { token, setUserData, resetUserData } = useUserData();
 
   return (
     <>
-      <Navigation token={token}/>
+      <Navigation token={token} />
       <Routes>
         <Route path="/" element={<></>} />
         <Route path="/login" element={<Login setUserData={setUserData} />} />
+        <Route path="/signup" element={<Signup />} />
         <Route
           path="/logout"
           element={<Logout resetUserData={resetUserData} />}

@@ -4,9 +4,7 @@ A miniatures portfolio website
 
 
 ## TODO:
-* Data Management/Networking abstraction
 * Improvements to miniEdit
-  * Reordering Images
   * Deleting Images
   * Deleting Mini
 * Manufacturers/Figures

@@ -15,6 +15,11 @@ function Navigation({token}) {
           Login
         </Navbar.Link>
       )}
+      {!token && (
+        <Navbar.Link as={Link} to={"/signup"}>
+          Signup
+        </Navbar.Link>
+      )}
       {token && (
         <Navbar.Link as={Link} to={"/logout"}>
           Logout

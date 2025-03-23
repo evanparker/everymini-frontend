@@ -5,9 +5,14 @@ async function postLogin(loginInfo) {
   return response;
 }
 
+async function postSignup(signupInfo) {
+  const response = await apiClient.post(`/auth/signup`, signupInfo);
+  return response;
+}
+
 async function postLogout() {
   const response = await apiClient.post(`/auth/logout/`);
   return response;
 }
 
-export { postLogin, postLogout };
+export { postLogin, postSignup, postLogout };
