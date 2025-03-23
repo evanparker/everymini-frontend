@@ -23,7 +23,7 @@ const Mini = () => {
     <>
       <div>
         {mini && <DisplayMini mini={mini}/>}
-        {token && userId === mini?.userId && <Button className="max-w-sm" as={Link} to={"/minis/" + id + "/edit"}>Edit</Button>}
+        {token && userId === mini?.userId && <Button className="max-w-sm mt-5" as={Link} to={"/minis/" + id + "/edit"}>Edit</Button>}
       </div>
     </>
   )

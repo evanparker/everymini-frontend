@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getMinisByUsername } from "../../services/user";
-import CldImage from "../CldImage";
-import { Card } from "flowbite-react";
+import DisplayMinis from "../minis/displayMinis";
+import { Avatar } from "flowbite-react";
 
 const User = () => {
   const [minis, setMinis] = useState();
@@ -20,25 +20,15 @@ const User = () => {
     <>
       {minis && (
         <div>
-          <h1>Minis for {username}</h1>
-          <div className="flex flex-wrap gap-4">
-            {minis.map((mini) => {
-              const publicId =
-                mini?.images[0] && mini?.images[0].cloudinaryPublicId;
-              return (
-                <Link key={mini._id} to={"/minis/" + mini._id}>
-                  <Card
-                    className="max-w-sm overflow-hidden text-gray-900 dark:text-white"
-                    renderImage={() =>
-                      publicId && <CldImage publicId={publicId} />
-                    }
-                  >
-                    {mini.name}
-                  </Card>
-                </Link>
-              );
-            })}
-          </div>
+          <Avatar rounded className="mb-5">
+            <div className="space-y-1 font-medium dark:text-white">
+              <div>{username}</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">
+                Joined in August 2014
+              </div>
+            </div>
+          </Avatar>
+          <DisplayMinis minis={minis} />
         </div>
       )}
     </>

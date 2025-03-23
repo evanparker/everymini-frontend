@@ -2,12 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { postLogin } from "../../services/auth";
-import {
-  Button,
-  Checkbox,
-  Label,
-  TextInput,
-} from "flowbite-react";
+import { Button, Checkbox, Label, TextInput } from "flowbite-react";
 
 const Login = ({ setUserData }) => {
   const [email, setEmail] = useState();
@@ -44,7 +39,12 @@ const Login = ({ setUserData }) => {
           <div className="mb-2 block">
             <Label htmlFor="password1" value="Your password" />
           </div>
-          <TextInput id="password1" type="password" required onChange={(e) => setPassword(e.target.value)} />
+          <TextInput
+            id="password1"
+            type="password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
         <div className="flex items-center gap-2">
           <Checkbox id="remember" />
