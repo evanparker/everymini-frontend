@@ -4,11 +4,7 @@ A miniatures portfolio website
 
 
 ## TODO:
-* Thumbnails for
-  * Minis
-  * Users
 * Data Management/Networking abstraction
-* Styling
 * Improvements to miniEdit
   * Reordering Images
   * Deleting Images

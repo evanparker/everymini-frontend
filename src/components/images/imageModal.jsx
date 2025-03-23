@@ -6,7 +6,7 @@ import CldImage from "./CldImage";
 function ImageModal ({image, onClose, show}) {
 
   return <>
-    <Modal dismissible show={show} onClose={onClose} size="7xl">
+    <Modal dismissible show={show} onClose={onClose} onClick={onClose} size="7xl">
       <Modal.Body>
         <CldImage publicId={image?.cloudinaryPublicId} />
       </Modal.Body>
