@@ -9,7 +9,7 @@ const cld = new Cloudinary({
   },
 });
 // eslint-disable-next-line react/prop-types
-const CldImage = ({ publicId }) => {
+const CldThumbnailImage = ({ publicId }) => {
   const myImage = cld
     .image(publicId)
     .resize(thumbnail().width(400).height(400))
@@ -22,4 +22,4 @@ const CldImage = ({ publicId }) => {
     />
   );
 };
-export default CldImage;
+export default CldThumbnailImage;

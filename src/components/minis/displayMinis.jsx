@@ -1,4 +1,4 @@
-import CldImage from "../CldImage";
+import CldThumbnailImage from "../images/CldThumbnailImage";
 import PropTypes from "prop-types";
 import { Card } from "flowbite-react";
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ const DisplayMinis = ({ minis }) => {
           <Link key={mini._id} to={"/minis/" + mini._id}>
             <Card
               className="w-60 overflow-hidden text-gray-900 dark:text-white"
-              renderImage={() => publicId && <CldImage publicId={publicId} />}
+              renderImage={() => publicId && <CldThumbnailImage publicId={publicId} />}
             >
               {mini.name}
             </Card>
