@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useUserData from "../../useUserData";
-import DragAndDrop from "./DragAndDrop";
+import DragAndDrop from "../images/DragAndDrop";
 import { getMini, putMini } from "../../services/mini";
 import { postImage } from "../../services/image";
 import { Button, HR, Label, TextInput } from "flowbite-react";

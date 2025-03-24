@@ -1,15 +1,15 @@
 import {useEffect, useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import useUserData from '../../useUserData';
-import DisplayMini from './displayMini';
+import DisplayFigure from './displayFigure';
 import DragAndDrop from '../images/DragAndDrop'
-import { postMini } from '../../services/mini';
+import { postFigure } from '../../services/figure';
 import { postImage } from '../../services/image';
 import { Button, HR, Label, TextInput } from 'flowbite-react';
 
-const MiniNew = () => {
+const FigureNew = () => {
 
-  const [mini, setMini] = useState({name: "", images: []});
+  const [figure, setFigure] = useState({name: "", images: []});
   const { token } = useUserData();
   const navigate = useNavigate();
 
@@ -18,22 +18,22 @@ const MiniNew = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const miniData = await postMini(mini);
-    navigate(`/minis/${miniData._id}`);
+    const figureData = await postFigure(figure);
+    navigate(`/figures/${figureData._id}`);
   }
 
   const addImages = async (publicIds) => {
-    let images = mini.images;
+    let images = figure.images;
     for (let publicId of publicIds) {
       const newImage = await postImage({cloudinaryPublicId: publicId});
       images = [newImage, ...images];
     }
-    setMini(prevMini => ({ ...prevMini, images }));
+    setFigure(prevFigure => ({ ...prevFigure, images }));
   }
 
   const handleNameChange = (e) => {
     e.preventDefault();
-    setMini({...mini, name: e.target.value})
+    setFigure({...figure, name: e.target.value})
   }
 
   return (
@@ -46,7 +46,7 @@ const MiniNew = () => {
               <TextInput
                 id="name1"
                 type="text"
-                value={mini.name}
+                value={figure.name}
                 onChange={handleNameChange}
               />
             </div>
@@ -55,7 +55,7 @@ const MiniNew = () => {
             <Button type="submit">Save</Button>
           </form>
           <HR/>
-          <DisplayMini mini={mini} />
+          <DisplayFigure figure={figure} />
         </div>
       }
       {!token &&
@@ -66,4 +66,4 @@ const MiniNew = () => {
 }
 
 
-export default MiniNew
+export default FigureNew

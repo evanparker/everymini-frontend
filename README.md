@@ -5,6 +5,7 @@ A miniatures portfolio website
 
 ## TODO:
 * Purchase Domain and Deployment
+* Add createdOn/updatedOn/etc.
 * ~~Improvements to miniEdit~~
   * ~~Deleting Images~~
   * ~~Deleting Mini~~
@@ -16,7 +17,10 @@ A miniatures portfolio website
   * https://jsonapi.org/ 
   * https://www.npmjs.com/package/jsonapi-serializer#relationship-deserializer
 * Tags
-
+* Add alerts/toasts for
+  * Deleting
+  * Saving
+  * Logging out
 
 # React + Vite
 

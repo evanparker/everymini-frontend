@@ -1,6 +1,7 @@
 import { Navbar, DarkThemeToggle } from "flowbite-react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { HiPlus } from "react-icons/hi";
 
 function Navigation({ token }) {
   return (
@@ -19,7 +20,7 @@ function Navigation({ token }) {
         </Navbar.Link>
         {token && (
           <Navbar.Link as={Link} to={"/minis/new"}>
-            New Mini
+            <HiPlus className="inline"/> New Mini
           </Navbar.Link>
         )}
         {!token && (

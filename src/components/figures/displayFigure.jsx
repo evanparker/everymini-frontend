@@ -1,9 +1,10 @@
-import CldThumbnailImage from "../images/CldThumbnailImage";
-import PropTypes from "prop-types";
-import ImageModal from "../images/imageModal";
 import { useState } from "react";
+import PropTypes from "prop-types";
+import CldThumbnailImage from "../images/CldThumbnailImage";
+import ImageModal from "../images/imageModal";
 
-const DisplayMini = ({ mini }) => {
+
+const DisplayFigure = ({ figure }) => {
 
   const [selectedImage, setSelectedImage] = useState();
 
@@ -15,9 +16,9 @@ const DisplayMini = ({ mini }) => {
     <>
       <ImageModal onClose={onClose} image={selectedImage} show={!!selectedImage} />
       <div>
-        <h1 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{mini?.name || "Untitled Mini"}</h1>
+        <h1 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{figure?.name || "Untitled Figure"}</h1>
         <div className="mt-5 flex flex-wrap gap-4">
-          {mini?.images?.map((img) => (
+          {figure?.images?.map((img) => (
             <div key={img._id} onClick={()=>setSelectedImage(img)} className="cursor-pointer max-w-md flex rounded-lg border overflow-hidden border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">
               <CldThumbnailImage publicId={img.cloudinaryPublicId} />
             </div>
@@ -28,8 +29,9 @@ const DisplayMini = ({ mini }) => {
   );
 };
 
-DisplayMini.propTypes = {
-  mini: PropTypes.object,
+DisplayFigure.propTypes = {
+  figure: PropTypes.object,
 };
 
-export default DisplayMini;
+
+export default DisplayFigure;
