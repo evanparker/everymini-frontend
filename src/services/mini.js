@@ -20,5 +20,9 @@ async function putMini(id, mini) {
   return response;
 }
 
+async function deleteMini(id) {
+  const response = await apiClient.delete(`/minis/${id}`);
+  return response;
+}
 
-export { getMini, getMinis, postMini, putMini };
+export { getMini, getMinis, postMini, putMini, deleteMini };

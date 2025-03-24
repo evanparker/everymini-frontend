@@ -5,9 +5,9 @@ A miniatures portfolio website
 
 ## TODO:
 * Purchase Domain and Deployment
-* Improvements to miniEdit
+* ~~Improvements to miniEdit~~
   * ~~Deleting Images~~
-  * Deleting Mini
+  * ~~Deleting Mini~~
 * Manufacturers/Figures
 * User data/avatars
 * Moderation
