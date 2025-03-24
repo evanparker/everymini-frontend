@@ -18,6 +18,9 @@ function Navigation({ token }) {
         <Navbar.Link as={Link} to={"/minis"}>
           Minis
         </Navbar.Link>
+        <Navbar.Link as={Link} to={"/figures"}>
+          Figures
+        </Navbar.Link>
         {token && (
           <Navbar.Link as={Link} to={"/minis/new"}>
             <HiPlus className="inline"/> New Mini

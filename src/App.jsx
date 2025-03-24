@@ -18,7 +18,6 @@ import Signup from "./components/auth/signup";
 function App() {
   const { token, setUserData, resetUserData } = useUserData();
 
-
   return (
     <>
       <Navigation token={token} />

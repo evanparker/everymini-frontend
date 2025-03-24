@@ -5,20 +5,29 @@ import { deleteFigure, getFigure } from "../../services/figure";
 import { Button } from "flowbite-react";
 import DeleteModal from "../deleteModal";
 import { BsFillTrash3Fill, BsFillPencilFill } from "react-icons/bs";
+import { getUserByMe } from "../../services/user";
 
 const Figure = () => {
   const navigate = useNavigate();
   const [figure, setFigure] = useState();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const { id } = useParams();
-  const isAdmin = true; // todo: set when userData is accessibile
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchFigureData = async () => {
       const figureData = await getFigure(id);
       setFigure(figureData);
     };
-    fetchData();
+    const fetchSelfData = async () => {
+      const selfData = await getUserByMe();
+      if(selfData.roles.includes("admin")) {
+        setIsAdmin(true);
+      }
+    };
+    
+    fetchFigureData();
+    fetchSelfData();
   }, [id]);
 
   const handleDeleteFigure = async () => {

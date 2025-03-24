@@ -6,21 +6,30 @@ import { postImage } from "../../services/image";
 import { Button, HR, Label, TextInput } from "flowbite-react";
 import CldThumbnailImage from "../images/CldThumbnailImage";
 import { BsFillTrash3Fill } from "react-icons/bs";
+import { getUserByMe } from "../../services/user";
 
 const FigureEdit = () => {
   const [figure, setFigure] = useState();
+  const [isAdmin, setIsAdmin] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const dragImage = useRef(0);
   const draggedOverImage = useRef(0);
-  const isAdmin = true; // todo: set when userData is accessibile
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchFigureData = async () => {
       const figureData = await getFigure(id);
       setFigure(figureData);
     };
-    fetchData();
+    const fetchSelfData = async () => {
+      const selfData = await getUserByMe();
+      if(selfData.roles.includes("admin")) {
+        setIsAdmin(true);
+      }
+    };
+    
+    fetchFigureData();
+    fetchSelfData();
   }, [id]);
 
   const handleSort = () => {

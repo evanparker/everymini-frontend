@@ -5,4 +5,9 @@ async function getMinisByUsername(username) {
   return response;
 }
 
-export { getMinisByUsername };
+async function getUserByMe() {
+  const response = await apiClient.get(`/users/me`);
+  return response;
+}
+
+export { getMinisByUsername, getUserByMe };
