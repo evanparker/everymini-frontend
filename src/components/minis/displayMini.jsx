@@ -15,7 +15,7 @@ const DisplayMini = ({ mini }) => {
     <>
       <ImageModal onClose={onClose} image={selectedImage} show={!!selectedImage} />
       <div>
-        <h1 className="mt-5 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{mini?.name || "Untitled Mini"}</h1>
+        <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">{mini?.name || "Untitled Mini"}</h1>
         <div className="mt-5 flex flex-wrap gap-4">
           {mini?.images?.map((img) => (
             <div key={img._id} onClick={()=>setSelectedImage(img)} className="cursor-pointer max-w-md flex rounded-lg border overflow-hidden border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">

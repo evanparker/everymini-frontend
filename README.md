@@ -4,13 +4,15 @@ A miniatures portfolio website
 
 
 ## TODO:
+* User data/avatars
 * Purchase Domain and Deployment
 * Add createdOn/updatedOn/etc.
+* Error pages (404, etc)
 * ~~Improvements to miniEdit~~
   * ~~Deleting Images~~
   * ~~Deleting Mini~~
-* Manufacturers/Figures
-* User data/avatars
+  * ~~Reordering Images~~
+* Manufacturers/~~Figures~~
 * Moderation
 * Search
 * Change api to use json:api format 

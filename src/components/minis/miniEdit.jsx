@@ -40,7 +40,6 @@ const MiniEdit = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(mini);
     const miniData = await putMini(mini._id, mini);
     setMini({ ...miniData, images: mini.images });
     navigate(`/minis/${id}`);
@@ -83,7 +82,7 @@ const MiniEdit = () => {
           </form>
           <HR />
           <div>
-            <h1 className=" text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
               {mini?.name || "Untitled Mini"}
             </h1>
             <div className="mt-5 flex flex-wrap gap-4">
