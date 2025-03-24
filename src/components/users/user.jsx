@@ -23,9 +23,9 @@ const User = () => {
           <Avatar rounded className="mb-5">
             <div className="space-y-1 font-medium dark:text-white">
               <div>{username}</div>
-              <div className="text-sm text-gray-500 dark:text-gray-400">
+              {/* <div className="text-sm text-gray-500 dark:text-gray-400">
                 Joined in August 2014
-              </div>
+              </div> */}
             </div>
           </Avatar>
           <DisplayMinis minis={minis} />

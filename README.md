@@ -4,15 +4,18 @@ A miniatures portfolio website
 
 
 ## TODO:
+* Purchase Domain and Deployment
 * Improvements to miniEdit
-  * Deleting Images
+  * ~~Deleting Images~~
   * Deleting Mini
 * Manufacturers/Figures
-* Purchase Domain and Deployment
+* User data/avatars
 * Moderation
+* Search
 * Change api to use json:api format 
   * https://jsonapi.org/ 
   * https://www.npmjs.com/package/jsonapi-serializer#relationship-deserializer
+* Tags
 
 
 # React + Vite

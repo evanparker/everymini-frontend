@@ -18,7 +18,7 @@ const DisplayMini = ({ mini }) => {
         <h1 className=" text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{mini?.name || "Untitled Mini"}</h1>
         <div className="mt-5 flex flex-wrap gap-4">
           {mini?.images?.map((img) => (
-            <div key={img._id} onClick={()=>setSelectedImage(img)} className="max-w-md flex rounded-lg border overflow-hidden border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">
+            <div key={img._id} onClick={()=>setSelectedImage(img)} className="cursor-pointer max-w-md flex rounded-lg border overflow-hidden border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">
               <CldThumbnailImage publicId={img.cloudinaryPublicId} />
             </div>
           ))}

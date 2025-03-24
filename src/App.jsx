@@ -18,7 +18,7 @@ function App() {
     <>
       <Navigation token={token} />
       <Routes>
-        <Route path="/" element={<></>} />
+        <Route path="/" element={<Minis />} />
         <Route path="/login" element={<Login setUserData={setUserData} />} />
         <Route path="/signup" element={<Signup />} />
         <Route

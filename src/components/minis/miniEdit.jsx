@@ -6,6 +6,7 @@ import { getMini, putMini } from "../../services/mini";
 import { postImage } from "../../services/image";
 import { Button, HR, Label, TextInput } from "flowbite-react";
 import CldThumbnailImage from "../images/CldThumbnailImage";
+import { BsFillTrash3Fill } from "react-icons/bs";
 
 const MiniEdit = () => {
   const [mini, setMini] = useState();
@@ -30,6 +31,12 @@ const MiniEdit = () => {
     imagesClone[draggedOverImage.current] = temp;
     setMini({ ...mini, images: imagesClone });
   };
+
+  const handleDelete = (index) => {
+    const imagesClone = mini.images;
+    imagesClone.splice(index,1);
+    setMini({ ...mini, images: imagesClone });
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -88,8 +95,11 @@ const MiniEdit = () => {
                   onDragEnd={handleSort}
                   onDragOver={(e) => e.preventDefault()}
                   key={img._id}
-                  className="max-w-md flex rounded-lg border overflow-hidden border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800"
+                  className="relative cursor-move max-w-md flex rounded-lg border overflow-hidden border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800"
                 >
+                  <div onClick={()=> handleDelete(index)} className="absolute right-2 top-2 p-2 cursor-pointer text-gray-500 hover:text-gray-800 bg-gray-100 dark:text-gray-400 dark:bg-gray-700 dark:hover:text-gray-200">
+                    <BsFillTrash3Fill className=""/>
+                  </div>
                   <CldThumbnailImage publicId={img.cloudinaryPublicId} />
                 </div>
               ))}
