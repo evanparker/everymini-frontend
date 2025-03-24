@@ -1,4 +1,4 @@
-import { Modal } from "flowbite-react";
+import { Modal, ModalBody } from "flowbite-react";
 import PropTypes from "prop-types";
 import CldImage from "./CldImage";
 
@@ -7,9 +7,9 @@ function ImageModal ({image, onClose, show}) {
 
   return <>
     <Modal dismissible show={show} onClose={onClose} onClick={onClose} size="7xl" className="cursor-pointer">
-      <Modal.Body>
+      <ModalBody>
         <CldImage publicId={image?.cloudinaryPublicId} />
-      </Modal.Body>
+      </ModalBody>
     </Modal>
   </>
 }
