@@ -5,6 +5,7 @@ import DisplayMini from './displayMini';
 import { deleteMini, getMini } from '../../services/mini';
 import { Button } from 'flowbite-react';
 import DeleteModal from '../deleteModal';
+import { BsFillTrash3Fill, BsFillPencilFill } from "react-icons/bs";
 
 const Mini = () => {
 
@@ -30,16 +31,14 @@ const Mini = () => {
   }
 
   return (
-    <>
-      <div>
-        <DeleteModal show={showDeleteModal} onClose={()=>setShowDeleteModal(false)} onConfirm={handleDeleteMini}/>
-        {mini && <DisplayMini mini={mini}/>}
-        <div className="flex gap-5">
-          {token && userId === mini?.userId && <Button className="max-w-36 mt-5" as={Link} to={"/minis/" + id + "/edit"}>Edit</Button>}
-          {token && userId === mini?.userId && <Button color="red" className="max-w-36 mt-5" onClick={()=>setShowDeleteModal(true)}>Delete</Button>}
-        </div>
+    <div>
+      <DeleteModal show={showDeleteModal} onClose={()=>setShowDeleteModal(false)} onConfirm={handleDeleteMini}/>
+      {mini && <DisplayMini mini={mini}/>}
+      <div className="flex gap-5">
+        {token && userId === mini?.userId && <Button className="max-w-36 mt-5" as={Link} to={"/minis/" + id + "/edit"}><BsFillPencilFill className="mr-2 h-5 w-5"/>Edit</Button>}
+        {token && userId === mini?.userId && <Button color="red" className="max-w-36 mt-5" onClick={()=>setShowDeleteModal(true)}><BsFillTrash3Fill className="mr-2 h-5 w-5"/> Delete</Button>}
       </div>
-    </>
+    </div>
   )
 }
 
