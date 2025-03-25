@@ -23,8 +23,8 @@ function App() {
 
   return (
     <>
-      <ThemeModeScript/>
-    <Navigation token={token} />
+      <ThemeModeScript />
+      <Navigation token={token} />
       <Routes>
         <Route path="/" element={<Minis />} />
 
