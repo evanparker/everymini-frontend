@@ -12,6 +12,7 @@ import FigureNew from "./components/figures/figureNew";
 import Figure from "./components/figures/figure";
 import FigureEdit from "./components/figures/figureEdit";
 import User from "./components/users/user";
+import UserEdit from "./components/users/userEdit";
 import Navigation from "./components/navigation";
 import Signup from "./components/auth/signup";
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/figures/new" element={<FigureNew />} />
 
         <Route path="/users/:username" element={<User />} />
+        <Route path="/users/edit" element={<UserEdit />} />
       </Routes>
     </>
   );

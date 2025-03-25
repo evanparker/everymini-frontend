@@ -10,4 +10,14 @@ async function getUserByMe() {
   return response;
 }
 
-export { getMinisByUsername, getUserByMe };
+async function getUserByUsername(username) {
+  const response = await apiClient.get(`/users/${username}`);
+  return response;
+}
+
+async function putUser(id, user) {
+  const response = await apiClient.put(`/users/${id}`, user);
+  return response;
+}
+
+export { getMinisByUsername, getUserByMe, getUserByUsername, putUser };

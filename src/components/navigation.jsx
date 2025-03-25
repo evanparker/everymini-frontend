@@ -1,10 +1,12 @@
 import {
   Navbar,
-  DarkThemeToggle,
   NavbarBrand,
   NavbarToggle,
   NavbarCollapse,
   NavbarLink,
+  Dropdown,
+  DropdownItem,
+  DarkThemeToggle,
 } from "flowbite-react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -31,9 +33,26 @@ function Navigation({ token }) {
           Figures
         </NavbarLink>
         {token && (
-          <NavbarLink as={Link} to={"/minis/new"}>
-            <HiPlus className="inline" /> New Mini
-          </NavbarLink>
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <NavbarLink>
+                <HiPlus className="inline" /> New
+              </NavbarLink>
+            }
+          >
+            <DropdownItem>
+              <NavbarLink as={Link} to={"/minis/new"}>
+                Mini
+              </NavbarLink>
+            </DropdownItem>
+            <DropdownItem>
+              <NavbarLink as={Link} to={"/figures/new"}>
+                Figure
+              </NavbarLink>
+            </DropdownItem>
+          </Dropdown>
         )}
         {!token && (
           <NavbarLink as={Link} to={"/login"}>
