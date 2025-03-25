@@ -28,7 +28,7 @@ const Signup = () => {
       <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4">
       <div>
           <div className="mb-2 block">
-            <Label htmlFor="username1" value="Username" />
+            <Label htmlFor="username1" >Username</Label>
           </div>
           <TextInput
             id="username1"
@@ -39,7 +39,7 @@ const Signup = () => {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="email1" value="Email" />
+            <Label htmlFor="email1">Email</Label>
           </div>
           <TextInput
             id="email1"
@@ -50,7 +50,7 @@ const Signup = () => {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="password1" value="Password" />
+            <Label htmlFor="password1" >Password</Label>
           </div>
           <TextInput
             id="password1"
@@ -61,7 +61,7 @@ const Signup = () => {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="invite1" value="Invite Code" />
+            <Label htmlFor="invite1">Invite Code</Label>
           </div>
           <TextInput
             id="invite1"

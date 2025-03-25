@@ -25,7 +25,7 @@ const Login = ({ setUserData }) => {
       <form onSubmit={handleSubmit} className="flex max-w-md flex-col gap-4">
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="email1" value="Your email" />
+            <Label htmlFor="email1">Email</Label>
           </div>
           <TextInput
             id="email1"
@@ -37,7 +37,7 @@ const Login = ({ setUserData }) => {
         </div>
         <div>
           <div className="mb-2 block">
-            <Label htmlFor="password1" value="Your password" />
+            <Label htmlFor="password1">Password</Label>
           </div>
           <TextInput
             id="password1"

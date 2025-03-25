@@ -16,15 +16,29 @@ import UserEdit from "./components/users/userEdit";
 import Navigation from "./components/navigation";
 import Signup from "./components/auth/signup";
 import { initThemeMode, ThemeModeScript } from "flowbite-react";
+import { useEffect, useState } from "react";
+import { getUserByMe } from "./services/user";
 
 function App() {
   const { token, setUserData, resetUserData } = useUserData();
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const userData = await getUserByMe();
+      setUser(userData);
+    };
+    if (token) {
+      fetchUserData();
+    }
+  }, [token]);
+
   initThemeMode();
 
   return (
     <>
       <ThemeModeScript />
-      <Navigation token={token} />
+      <Navigation user={user} />
       <Routes>
         <Route path="/" element={<Minis />} />
 

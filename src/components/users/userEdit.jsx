@@ -48,7 +48,7 @@ const UserEdit = () => {
             className="max-w-lg flex flex-col gap-5"
           >
             <div className=" mb-2 block">
-              <Label htmlFor="email1" value="Email" />
+              <Label htmlFor="email1">Email</Label>
               <TextInput
                 id="email1"
                 type="text"

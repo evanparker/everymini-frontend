@@ -68,7 +68,7 @@ const MiniEdit = () => {
             className="max-w-lg flex flex-col gap-5"
           >
             <div className=" mb-2 block">
-              <Label htmlFor="name1" value="Name" />
+              <Label htmlFor="name1">Name</Label>
               <TextInput
                 id="name1"
                 type="text"
