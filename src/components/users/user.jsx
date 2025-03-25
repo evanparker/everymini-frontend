@@ -26,7 +26,9 @@ const User = () => {
     <>
       {minis && (
         <div>
-          <UserAvater user={user} />
+          <div className="mb-5">
+            <UserAvater user={user} />
+          </div>
           <DisplayMinis minis={minis} />
         </div>
       )}

@@ -31,9 +31,9 @@ const UserEdit = () => {
     setUser((prevUser) => ({ ...prevUser, avatar: newImage }));
   };
 
-  const handleUsernameChange = (e) => {
+  const handleEmailChange = (e) => {
     e.preventDefault();
-    setUser((prevUser) => ({ ...prevUser, username: e.target.value }));
+    setUser((prevUser) => ({ ...prevUser, email: e.target.value }));
   };
 
   return (
@@ -48,12 +48,12 @@ const UserEdit = () => {
             className="max-w-lg flex flex-col gap-5"
           >
             <div className=" mb-2 block">
-              <Label htmlFor="username1" value="Username" />
+              <Label htmlFor="email1" value="Email" />
               <TextInput
-                id="username1"
+                id="email1"
                 type="text"
-                value={user?.username}
-                onChange={handleUsernameChange}
+                value={user?.email}
+                onChange={handleEmailChange}
               />
             </div>
             <DragAndDrop addImages={addImages} />
