@@ -9,10 +9,18 @@ const cld = new Cloudinary({
   },
 });
 // eslint-disable-next-line react/prop-types
-const CldImage = ({ publicId }) => {
+const CldImage = ({ publicId, width, height }) => {
+  let thumb = scale();
+  if(width !== undefined) {
+    thumb = thumb.width(width);
+  }
+  if(height !== undefined) {
+    thumb = thumb.height(height);
+  }
+
   const myImage = cld
     .image(publicId)
-    .resize(scale().width(1248))
+    .resize(thumb)
     .delivery(format('auto'))
     .delivery(quality('auto'));
   return (

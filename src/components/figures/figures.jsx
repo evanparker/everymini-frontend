@@ -18,12 +18,12 @@ const Figures = () => {
   return (
     <div className="flex flex-wrap gap-4">
       {figures.map((figure) => {
-        const publicId = figure?.images[0] && figure?.images[0].cloudinaryPublicId;
+        const publicId = figure?.images[0]?.cloudinaryPublicId;
         return (
           <Link key={figure._id} to={"/figures/" + figure._id}>
             <Card
               className="w-60 overflow-hidden text-gray-900 dark:text-white"
-              renderImage={() => publicId && <CldThumbnailImage publicId={publicId} />}
+              renderImage={() => publicId && <CldThumbnailImage publicId={publicId} width={238} height={238} />}
             >
               {figure.name}
             </Card>

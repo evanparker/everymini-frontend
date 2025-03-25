@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { getUserByMe, putUser } from "../../services/user";
-import { Avatar, Button, Label, TextInput } from "flowbite-react";
-import CldThumbnailImage from "../images/CldThumbnailImage";
-import { HiOutlineUser } from "react-icons/hi";
+import { Button, Label, TextInput } from "flowbite-react";
 import DragAndDrop from "../images/DragAndDrop";
 import { postImage } from "../../services/image";
 import { useNavigate } from "react-router-dom";
+import UserAvater from "./userAvatar";
 
 const UserEdit = () => {
   const [user, setUser] = useState();
@@ -42,30 +41,7 @@ const UserEdit = () => {
       {user && (
         <>
           <div>
-            <Avatar
-              rounded
-              className="mb-5"
-              img={(props) => (
-                <>
-                  {(user.avatar && (
-                    <div className="w-10 h-10 overflow-hidden rounded-full">
-                      <CldThumbnailImage
-                        publicId={user.avatar?.cloudinaryPublicId}
-                        {...props}
-                      />
-                    </div>
-                  )) || (
-                    <div className="rounded-full p-2 bg-gray-200 dark:bg-gray-600 dark:text-white">
-                      <HiOutlineUser />
-                    </div>
-                  )}
-                </>
-              )}
-            >
-              <div className="space-y-1 font-medium  dark:text-white">
-                <div>{user?.username}</div>
-              </div>
-            </Avatar>
+            <UserAvater user={user} />
           </div>
           <form
             onSubmit={handleSubmit}

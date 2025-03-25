@@ -99,7 +99,7 @@ const MiniEdit = () => {
                   <div onClick={()=> handleDelete(index)} className="absolute right-2 top-2 p-2 cursor-pointer text-gray-500 hover:text-gray-800 bg-gray-100 dark:text-gray-400 dark:bg-gray-700 dark:hover:text-gray-200">
                     <BsFillTrash3Fill className=""/>
                   </div>
-                  <CldThumbnailImage publicId={img.cloudinaryPublicId} />
+                  <CldThumbnailImage publicId={img.cloudinaryPublicId}  width={400} height={400}/>
                 </div>
               ))}
             </div>

@@ -8,7 +8,7 @@ function ImageModal ({image, onClose, show}) {
   return <>
     <Modal dismissible show={show} onClose={onClose} onClick={onClose} size="7xl" className="cursor-pointer">
       <ModalBody>
-        <CldImage publicId={image?.cloudinaryPublicId} />
+        <CldImage publicId={image?.cloudinaryPublicId} width={1248} />
       </ModalBody>
     </Modal>
   </>

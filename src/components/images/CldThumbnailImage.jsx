@@ -9,12 +9,19 @@ const cld = new Cloudinary({
   },
 });
 // eslint-disable-next-line react/prop-types
-const CldThumbnailImage = ({ publicId }) => {
+const CldThumbnailImage = ({ publicId, width, height }) => {
+  let thumb = thumbnail();
+  if(width !== undefined) {
+    thumb = thumb.width(width);
+  }
+  if(height !== undefined) {
+    thumb = thumb.height(height);
+  }
   const myImage = cld
     .image(publicId)
-    .resize(thumbnail().width(400).height(400))
     .delivery(format('auto'))
-    .delivery(quality('auto:good'));
+    .delivery(quality('auto:good'))
+    .resize(thumb)
   return (
     <AdvancedImage
       cldImg={myImage}

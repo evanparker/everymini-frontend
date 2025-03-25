@@ -19,7 +19,7 @@ const DisplayMini = ({ mini }) => {
         <div className="mt-5 flex flex-wrap gap-4">
           {mini?.images?.map((img) => (
             <div key={img._id} onClick={()=>setSelectedImage(img)} className="cursor-pointer max-w-md flex rounded-lg border overflow-hidden border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800">
-              <CldThumbnailImage publicId={img.cloudinaryPublicId} />
+              <CldThumbnailImage publicId={img.cloudinaryPublicId} width={400} height={400} />
             </div>
           ))}
         </div>
