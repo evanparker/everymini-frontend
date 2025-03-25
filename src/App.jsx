@@ -15,13 +15,16 @@ import User from "./components/users/user";
 import UserEdit from "./components/users/userEdit";
 import Navigation from "./components/navigation";
 import Signup from "./components/auth/signup";
+import { initThemeMode, ThemeModeScript } from "flowbite-react";
 
 function App() {
   const { token, setUserData, resetUserData } = useUserData();
+  initThemeMode();
 
   return (
     <>
-      <Navigation token={token} />
+      <ThemeModeScript/>
+    <Navigation token={token} />
       <Routes>
         <Route path="/" element={<Minis />} />
 
